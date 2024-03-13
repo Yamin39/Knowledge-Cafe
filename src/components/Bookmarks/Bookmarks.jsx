@@ -1,6 +1,6 @@
 const Bookmarks = () => {
     return (
-        <div className="w-[40%] bg-red-500">
+        <div className="md:w-[40%] bg-red-500">
             Bookmarks
         </div>
     );

@@ -13,7 +13,7 @@ const Blogs = () => {
   console.log(blogs);
 
   return (
-    <div className="w-[60%] bg-green-500">
+    <div className="md:w-[60%]">
       {blogs.map((blog) => (
         <Blog key={blog.id} blog={blog}></Blog>
       ))}
