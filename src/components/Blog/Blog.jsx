@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const Blog = ({ blog, handleBookmark }) => {
+const Blog = ({ blog, handleBookmark, handleCountTime }) => {
   const { cover, title, hashtags, reading_time, author, author_img, posted_date } = blog;
 
   const [toggle, setToggle] = useState(false);
@@ -47,7 +47,12 @@ const Blog = ({ blog, handleBookmark }) => {
           </a>
         ))}
       </div>
-      <button className="text-[#6047EC] font-semibold text-xl underline hover:opacity-85 active:scale-95 transition-all">Mark as read</button>
+      <button
+        onClick={() => handleCountTime(reading_time)}
+        className="text-[#6047EC] font-semibold text-xl underline hover:opacity-85 active:scale-95 transition-all"
+      >
+        Mark as read
+      </button>
     </div>
   );
 };
@@ -57,4 +62,5 @@ export default Blog;
 Blog.propTypes = {
   blog: PropTypes.object.isRequired,
   handleBookmark: PropTypes.func.isRequired,
+  handleCountTime: PropTypes.func.isRequired,
 };

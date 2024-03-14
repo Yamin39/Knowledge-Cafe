@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-const Bookmarks = ({ bookmarks }) => {
+const Bookmarks = ({ bookmarks, countTime }) => {
   return (
     <div className="md:w-[40%] space-y-6">
       <div className="text-center bg-[#6047EC1A] border border-[#6047EC] rounded-lg py-5 px-12 h-fit">
         <h3 className="text-2xl font-bold text-[#6047EC]">
           Spent time on read :
-          <br className="md:hidden" /> 177 min
+          <br className="md:hidden" /> {countTime} min
         </h3>
       </div>
       <div className="bg-[#1111110D] rounded-lg p-7">
@@ -27,4 +27,5 @@ export default Bookmarks;
 
 Bookmarks.propTypes = {
   bookmarks: PropTypes.array.isRequired,
+  countTime: PropTypes.number.isRequired,
 };
