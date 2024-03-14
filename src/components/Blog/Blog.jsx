@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, handleBookmark }) => {
   const { cover, title, hashtags, reading_time, author, author_img, posted_date } = blog;
 
   const [toggle, setToggle] = useState(false);
-  function handleBookmark() {
+  function handleToggle() {
     setToggle(!toggle);
   }
   const fillColor = toggle ? "#11111159" : "none";
@@ -23,7 +23,12 @@ const Blog = ({ blog }) => {
         </div>
         <div className="flex gap-2 text-dark-60">
           <p>{reading_time} min read</p>
-          <button onClick={() => handleBookmark()}>
+          <button
+            onClick={() => {
+              handleToggle();
+              handleBookmark(title);
+            }}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" fill={fillColor} viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path
                 strokeLinecap="round"
@@ -42,7 +47,7 @@ const Blog = ({ blog }) => {
           </a>
         ))}
       </div>
-      <button className="text-[#6047EC] font-semibold text-xl underline hover:opacity-85">Mark as read</button>
+      <button className="text-[#6047EC] font-semibold text-xl underline hover:opacity-85 active:scale-95 transition-all">Mark as read</button>
     </div>
   );
 };
@@ -51,4 +56,5 @@ export default Blog;
 
 Blog.propTypes = {
   blog: PropTypes.object.isRequired,
+  handleBookmark: PropTypes.func.isRequired,
 };
